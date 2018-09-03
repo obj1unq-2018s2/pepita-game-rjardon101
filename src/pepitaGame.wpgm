@@ -1,4 +1,5 @@
 import pepita.*
+import roque.*
 import ciudades.*
 import comidas.*
 import wollok.game.*
@@ -16,11 +17,17 @@ program PepitaGame {
 	game.addVisualIn(manzana, game.at(5,1))
 	game.addVisual(buenosAires)
 	game.addVisual(villaGesell)
-	game.addVisualCharacter(pepita)
+	//a pepita le saqué el character para que no vuele junto con roque
+	game.addVisual(pepita)
+	game.addVisualCharacter(roque)
 
 //	TECLADO
-	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
-	keyboard.b().onPressDo { pepita.volaHacia(buenosAires) }
+	keyboard.v().onPressDo { pepita.estaEn(villaGesell) }
+	keyboard.b().onPressDo { pepita.estaEn(buenosAires) }
+
+	
+// COLISIONES
+    game.whenCollideDo(roque, {algo => roque.encuentra(algo)})
 		
 //	START
 	game.start()

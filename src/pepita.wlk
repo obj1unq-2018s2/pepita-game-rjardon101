@@ -16,6 +16,7 @@ object pepita {
 			self.move(unaCiudad.posicion())
 			ciudad = unaCiudad
 		}
+		
 	}
 
 	method energiaParaVolar(distancia) = 15 + 5 * distancia
@@ -24,4 +25,28 @@ object pepita {
 		energia -= self.energiaParaVolar(posicion.distance(nuevaPosicion))
 		self.posicion(nuevaPosicion)
 	}	
+	
+	//el metodo funciona pero el mensaje no desaparece una vez que se mueve de ahí
+	method estaEn(unaCiudad) {
+		if(self.posicion() != unaCiudad.posicion() ) {
+			self.volaHacia(unaCiudad)
+		} 
+		else game.say(self, "ya estoy ahí")
+	}
+	
+	method distanciaEntrePepitaY(unaCiudad) {
+		return unaCiudad.distance()
+	}	
+		
+	method pepitaNoPuedeRecorrer(distancia) {
+		if(self.energiaParaVolar(distancia) < self.energia()) {
+			game.say(self, "dame de comer primero!")
+		}
+	}
+	
+	method teEncontro(algo) {
+		self.come(algo.comida())
+		game.addVisualIn(algo.comida(),game.at(1.randomUpTo(10),1.randomUpTo(10)))
+	}
+
 }
