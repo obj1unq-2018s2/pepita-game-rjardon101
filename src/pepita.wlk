@@ -34,9 +34,9 @@ object pepita {
 		else game.say(self, "ya estoy ahí")
 	}
 	
-	method distanciaEntrePepitaY(unaCiudad) {
-		return unaCiudad.distance()
-	}	
+	
+	//no me salió
+	method distance(unaCiudad) = unaCiudad.posicion()
 		
 	method pepitaNoPuedeRecorrer(distancia) {
 		if(self.energiaParaVolar(distancia) < self.energia()) {
@@ -44,6 +44,7 @@ object pepita {
 		}
 	}
 	
+	// como hago para que pepita coma solo UNA VEZ
 	method teEncontro(algo) {
 		self.come(algo.comida())
 		game.addVisualIn(algo.comida(),game.at(1.randomUpTo(10),1.randomUpTo(10)))
