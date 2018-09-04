@@ -22,8 +22,8 @@ program PepitaGame {
 	game.addVisualCharacter(roque)
 
 //	TECLADO
-	keyboard.v().onPressDo { pepita.estaEn(villaGesell) }
-	keyboard.b().onPressDo { pepita.estaEn(buenosAires) }
+	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
+	keyboard.b().onPressDo { pepita.volaHacia(buenosAires) }
 
 	
 // COLISIONES
