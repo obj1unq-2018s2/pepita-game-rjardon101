@@ -35,11 +35,19 @@ object pepita {
 	}
 	
 	
-	//no me salió
-	method distance(unaCiudad) = unaCiudad.posicion()
+	//metodo sin usar
+	method distanciaEntrePepita(distancia) = distancia.posicion().distance(self.posicion())
+	
+	method energiaAUtiliza(distancia) {
+		var energiaUsada = energia
+		self.move(distancia)
+		return energiaUsada -= energia > 0
+	}	
 		
+		//no me sale, mi idea era sacar la energia que se necesita usar para recorrer una distancia 
+		//y compararla con la energia que tiene pepita
 	method pepitaNoPuedeRecorrer(distancia) {
-		if(self.energiaParaVolar(distancia) < self.energia()) {
+		if(not self.energiaAUtiliza(distancia)) {
 			game.say(self, "dame de comer primero!")
 		}
 	}
